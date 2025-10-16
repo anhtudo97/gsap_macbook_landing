@@ -12,10 +12,17 @@
     "commitlint": "commitlint --edit"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
     "@tailwindcss/vite": "^4.1.14",
+    "gsap": "^3.13.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tailwindcss": "^4.1.14"
+    "react-responsive": "^10.0.1",
+    "tailwindcss": "^4.1.14",
+    "three": "^0.180.0",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
