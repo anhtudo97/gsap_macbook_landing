@@ -4,8 +4,8 @@ Command: npx gltfjsx@6.5.3 macbook-14.glb -T
 Files: macbook-14.glb [629.72KB] > /Users/adrianhajdin/Desktop/macbook_gsap_app/public/models/macbook-14-transformed.glb [627.9KB] (0%)
 Author: jackbaeten (https://sketchfab.com/jackbaeten)
 License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
-Source: https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b303144f78490007d91ff57c4
-Title: macbook pro M3 16 inch 2024
+Source: https://sketchfab.com/3d-models/macbook-pro-m3-14-inch-2024-8e34fc2b303144f78490007d91ff57c4
+Title: macbook pro M3 14 inch 2024
 */
 
 import { useGLTF, useTexture } from '@react-three/drei';
@@ -32,22 +32,22 @@ type GLTFResult = GLTF & {
 };
 
 export default function MacbookModel14(props: MacbookModel14Props) {
-    const { color } = useMacbookStore();
+  const { color } = useMacbookStore();
   const { nodes, materials, scene } = useGLTF('/models/macbook-14-transformed.glb') as unknown as GLTFResult;
 
   const texture = useTexture('/screen.png');
-    texture.colorSpace = SRGBColorSpace;
-    texture.needsUpdate = true;
+  texture.colorSpace = SRGBColorSpace;
+  texture.needsUpdate = true;
 
   useEffect(() => {
     scene.traverse((child: Object3D) => {
-        if(child instanceof Mesh) {
-            if(!noChangeParts.includes(child.name)) {
-                child.material.color = new Color(color);
-            }
+      if (child instanceof Mesh) {
+        if (!noChangeParts.includes(child.name)) {
+          child.material.color = new Color(color);
         }
-    })
-  }, [color, scene])
+      }
+    });
+  }, [color, scene]);
 
   return (
     <group {...props} dispose={null}>
@@ -69,11 +69,11 @@ export default function MacbookModel14(props: MacbookModel14Props) {
       <mesh geometry={(nodes.Object_96 as Mesh).geometry} material={materials.PaletteMaterial003} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={(nodes.Object_107 as Mesh).geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={(nodes.Object_123 as Mesh).geometry} rotation={[Math.PI / 2, 0, 0]} >
-          <meshBasicMaterial map={texture} />
+        <meshBasicMaterial map={texture} />
       </mesh>
       <mesh geometry={(nodes.Object_127 as Mesh).geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]} />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/macbook-14-transformed.glb')
+useGLTF.preload('/models/macbook-14-transformed.glb');

@@ -5,6 +5,8 @@ import { Group, Object3D, Mesh, Material } from 'three';
 
 import MacbookModel from "../models/Macbook";
 import { useGSAP } from "@gsap/react";
+import MacbookModel16 from "../models/Macbook-16";
+import MacbookModel14 from "../models/Macbook-14";
 
 interface ModelSwitcherProps {
   scale: number;
@@ -19,7 +21,7 @@ const fadeMeshes = (group: Group | null, opacity: number): void => {
 
   group.traverse((child: Object3D) => {
     if (child instanceof Mesh) {
-      const material = child.material as Material & { transparent: boolean; opacity: number };
+      const material = child.material as Material & { transparent: boolean; opacity: number; };
       material.transparent = true;
       gsap.to(material, { opacity, duration: ANIMATION_DURATION });
     }
@@ -69,13 +71,13 @@ const ModelSwitcher: React.FC<ModelSwitcherProps> = ({ scale, isMobile }) => {
     <>
       <PresentationControls {...controlsConfig}>
         <group ref={largeMacbookRef}>
-          <MacbookModel scale={isMobile ? 0.05 : 0.08} variant="16inch" />
+          <MacbookModel16 scale={isMobile ? 0.05 : 0.08} />
         </group>
       </PresentationControls>
 
       <PresentationControls {...controlsConfig}>
         <group ref={smallMacbookRef}>
-          <MacbookModel scale={isMobile ? 0.03 : 0.06} variant="14inch" />
+          <MacbookModel14 scale={isMobile ? 0.03 : 0.06} />
         </group>
       </PresentationControls>
     </>
